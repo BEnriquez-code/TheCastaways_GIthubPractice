@@ -1,10 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Cheesey\\Desktop\\TheCastaways_GIthubPractice\\Finance_Tracker\\",
+  "WorkspaceRootPath": "C:\\Users\\Cheesey\\Desktop\\TheCastaways_FinanceTracker\\Finance_Tracker\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BBD77E36-7137-4B94-8ADC-82E904B61804}|Finance_Tracker\\Finance_Tracker.csproj|c:\\users\\cheesey\\desktop\\thecastaways_githubpractice\\finance_tracker\\finance_tracker\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BBD77E36-7137-4B94-8ADC-82E904B61804}|Finance_Tracker\\Finance_Tracker.csproj|solutionrelative:finance_tracker\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{54AE3F04-DBB2-DE48-55D2-C3BE0D1B3D26}|Finance_Tracker\\Finance_Tracker.csproj|c:\\users\\cheesey\\desktop\\thecastaways_financetracker\\finance_tracker\\finance_tracker\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54AE3F04-DBB2-DE48-55D2-C3BE0D1B3D26}|Finance_Tracker\\Finance_Tracker.csproj|solutionrelative:finance_tracker\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{54AE3F04-DBB2-DE48-55D2-C3BE0D1B3D26}|Finance_Tracker\\Finance_Tracker.csproj|c:\\users\\cheesey\\desktop\\thecastaways_financetracker\\finance_tracker\\finance_tracker\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54AE3F04-DBB2-DE48-55D2-C3BE0D1B3D26}|Finance_Tracker\\Finance_Tracker.csproj|solutionrelative:finance_tracker\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{54AE3F04-DBB2-DE48-55D2-C3BE0D1B3D26}|Finance_Tracker\\Finance_Tracker.csproj|c:\\users\\cheesey\\desktop\\thecastaways_financetracker\\finance_tracker\\finance_tracker\\transactions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54AE3F04-DBB2-DE48-55D2-C3BE0D1B3D26}|Finance_Tracker\\Finance_Tracker.csproj|solutionrelative:finance_tracker\\transactions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,17 +22,43 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Account.cs",
+              "DocumentMoniker": "C:\\Users\\Cheesey\\Desktop\\TheCastaways_FinanceTracker\\Finance_Tracker\\Finance_Tracker\\Account.cs",
+              "RelativeDocumentMoniker": "Finance_Tracker\\Account.cs",
+              "ToolTip": "C:\\Users\\Cheesey\\Desktop\\TheCastaways_FinanceTracker\\Finance_Tracker\\Finance_Tracker\\Account.cs",
+              "RelativeToolTip": "Finance_Tracker\\Account.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-20T21:34:07.947Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Transactions.cs",
+              "DocumentMoniker": "C:\\Users\\Cheesey\\Desktop\\TheCastaways_FinanceTracker\\Finance_Tracker\\Finance_Tracker\\Transactions.cs",
+              "RelativeDocumentMoniker": "Finance_Tracker\\Transactions.cs",
+              "ToolTip": "C:\\Users\\Cheesey\\Desktop\\TheCastaways_FinanceTracker\\Finance_Tracker\\Finance_Tracker\\Transactions.cs",
+              "RelativeToolTip": "Finance_Tracker\\Transactions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-20T21:33:58.018Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Cheesey\\Desktop\\TheCastaways_GIthubPractice\\Finance_Tracker\\Finance_Tracker\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\Cheesey\\Desktop\\TheCastaways_FinanceTracker\\Finance_Tracker\\Finance_Tracker\\Program.cs",
               "RelativeDocumentMoniker": "Finance_Tracker\\Program.cs",
-              "ToolTip": "C:\\Users\\Cheesey\\Desktop\\TheCastaways_GIthubPractice\\Finance_Tracker\\Finance_Tracker\\Program.cs",
+              "ToolTip": "C:\\Users\\Cheesey\\Desktop\\TheCastaways_FinanceTracker\\Finance_Tracker\\Finance_Tracker\\Program.cs",
               "RelativeToolTip": "Finance_Tracker\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-10-19T21:19:48.171Z",
               "EditorCaption": ""

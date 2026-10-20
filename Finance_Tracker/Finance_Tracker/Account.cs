@@ -8,6 +8,9 @@ namespace Finance_Tracker
 {
     internal class Account
     {
+        public Account() {
+            
+        }
         public Account(string fName, string lName, int accountNum, string password, uint pin = 0000, float balance = 0.0f) {
             this.FirstName = fName;
             this.LastName = lName;

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Cheesey\\Desktop\\TheCastaways_GIthubPractice\\Finance_Tracker\\Finance_Tracker\\Finance_Tracker.csproj": {}
+    "C:\\Users\\Cheesey\\Desktop\\TheCastaways_FinanceTracker\\Finance_Tracker\\Finance_Tracker\\Finance_Tracker.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Cheesey\\Desktop\\TheCastaways_GIthubPractice\\Finance_Tracker\\Finance_Tracker\\Finance_Tracker.csproj": {
+    "C:\\Users\\Cheesey\\Desktop\\TheCastaways_FinanceTracker\\Finance_Tracker\\Finance_Tracker\\Finance_Tracker.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Cheesey\\Desktop\\TheCastaways_GIthubPractice\\Finance_Tracker\\Finance_Tracker\\Finance_Tracker.csproj",
+        "projectUniqueName": "C:\\Users\\Cheesey\\Desktop\\TheCastaways_FinanceTracker\\Finance_Tracker\\Finance_Tracker\\Finance_Tracker.csproj",
         "projectName": "Finance_Tracker",
-        "projectPath": "C:\\Users\\Cheesey\\Desktop\\TheCastaways_GIthubPractice\\Finance_Tracker\\Finance_Tracker\\Finance_Tracker.csproj",
+        "projectPath": "C:\\Users\\Cheesey\\Desktop\\TheCastaways_FinanceTracker\\Finance_Tracker\\Finance_Tracker\\Finance_Tracker.csproj",
         "packagesPath": "C:\\Users\\Cheesey\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Cheesey\\Desktop\\TheCastaways_GIthubPractice\\Finance_Tracker\\Finance_Tracker\\obj\\",
+        "outputPath": "C:\\Users\\Cheesey\\Desktop\\TheCastaways_FinanceTracker\\Finance_Tracker\\Finance_Tracker\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
