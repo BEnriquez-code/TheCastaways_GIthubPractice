@@ -1,0 +1,11 @@
+#Visual Studio local state
+.vs/
+#Build Output
+bin/
+obj/
+
+#User Specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
