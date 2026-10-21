@@ -4,9 +4,9 @@ using System.Text;
 
 namespace Finance_Tracker
 {
-    public class CIO
+    public static class CIO
     {
-        public bool PromptForBool(string prompt, string trueString, string falseString) {
+        public static bool PromptForBool(string prompt, string trueString, string falseString) {
             if (string.IsNullOrWhiteSpace(prompt) || string.IsNullOrWhiteSpace(trueString) || string.IsNullOrWhiteSpace(falseString)) throw new ArgumentException("prompt, trueString, or falseString cannot be null or just whitespace");
             string? input = null;
             bool isInvalid = true;
@@ -31,7 +31,7 @@ namespace Finance_Tracker
             return string.Equals(input, trueString, StringComparison.OrdinalIgnoreCase);
         }
 
-        public string PromptForString(string prompt, bool allowEmpty) {
+        public static string PromptForString(string prompt, bool allowEmpty) {
             if (string.IsNullOrWhiteSpace(prompt)) throw new ArgumentException("Prompt cannot be null or just whitespace");
             string? input = null;
             bool isInvalid = true;
@@ -84,7 +84,7 @@ namespace Finance_Tracker
             return number;
         }
 
-        public float PromptForFloat(string prompt, float min, float max) {
+        public static float PromptForFloat(string prompt, float min, float max) {
             if (string.IsNullOrWhiteSpace(prompt) || min > max) throw new ArgumentException("The prompt can't be null, empty, or just whitespace. Min can't be greater than Max");
 
             string? input = null;

@@ -6,6 +6,7 @@
         {
             // Start Code for Depositing (NOT IMPLEMENTED)
             Account newAccount = new Account();
+            Transactions.Withdraw(newAccount);
             Transactions.Deposit(newAccount);
         }
 

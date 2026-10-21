@@ -8,23 +8,23 @@
     "net10.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Cheesey\\.nuget\\packages\\": {},
+    "C:\\Users\\branderson\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Cheesey\\Desktop\\TheCastaways_FinanceTracker\\Finance_Tracker\\Finance_Tracker\\Finance_Tracker.csproj",
+      "projectUniqueName": "C:\\Neumont\\Q5\\Intro to Project Management\\TheCastaways_Personal_Finance_app\\Finance_Tracker\\Finance_Tracker\\Finance_Tracker.csproj",
       "projectName": "Finance_Tracker",
-      "projectPath": "C:\\Users\\Cheesey\\Desktop\\TheCastaways_FinanceTracker\\Finance_Tracker\\Finance_Tracker\\Finance_Tracker.csproj",
-      "packagesPath": "C:\\Users\\Cheesey\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Cheesey\\Desktop\\TheCastaways_FinanceTracker\\Finance_Tracker\\Finance_Tracker\\obj\\",
+      "projectPath": "C:\\Neumont\\Q5\\Intro to Project Management\\TheCastaways_Personal_Finance_app\\Finance_Tracker\\Finance_Tracker\\Finance_Tracker.csproj",
+      "packagesPath": "C:\\Users\\branderson\\.nuget\\packages\\",
+      "outputPath": "C:\\Neumont\\Q5\\Intro to Project Management\\TheCastaways_Personal_Finance_app\\Finance_Tracker\\Finance_Tracker\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Cheesey\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\branderson\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
