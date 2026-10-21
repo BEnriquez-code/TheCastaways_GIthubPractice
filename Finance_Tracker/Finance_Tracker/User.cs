@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Finance_Tracker
 {
-    internal class User
+    public class User
     {
         public User(string userName, string password) {
             UserName = userName;
