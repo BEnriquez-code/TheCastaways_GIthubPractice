@@ -39,7 +39,7 @@ namespace Finance_Tracker
             }
                  }
 
-        public uint Pin { get; set; }
+        public string Pin { get; set; }
         public string Password { get; set; }
         #endregion
 
