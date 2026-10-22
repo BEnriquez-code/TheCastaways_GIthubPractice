@@ -2,18 +2,16 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Nodes;
 
 namespace Finance_Tracker
 {
     public class Authentication
     {
-        private List<User> users = new List<User>();
+        private string filePath = Path.Combine(AppContext.BaseDirectory, "users.json");
 
-        public Authentication()
-        {
-
-        }
-
+        public Authentication(){}
 
         public bool SignUp(string userName, string password, string confirmPassword)
         { 
@@ -23,46 +21,47 @@ namespace Finance_Tracker
 
             string name = userName.Trim();
 
-            User CurrentUser = new User("Bob", "password");
+            JsonArray json = ReadUsers();
 
-            if (LoadUsers(CurrentUser)) {
-                SaveUsers(CurrentUser);
-            }
-            
+            if (FindUser(json, name) != null) return false;
+
+            json.Add(JsonSerializer.SerializeToNode(new User(name, password)));
+            WriteUser(json);
 
             return true;
         }
 
-        public bool LogIn(User user)
+        public bool LogIn(string userName, string password)
         {
-           if (users.Contains(user))
-            {
-                return true;
-            }
-            return false;
+            JsonNode? user = FindUser(ReadUsers(), userName.Trim());
+            return user != null && user["Password"]?.GetValue<string>() == password;
         }
 
-        private void SaveUsers(User user)
-        {
-            users.Add(user);
+        private JsonNode? FindUser(JsonArray json, string userName) { 
+            return json.FirstOrDefault(u =>
+                string.Equals(u?["UserName"]?.GetValue<string>(), userName,
+                    StringComparison.OrdinalIgnoreCase));
         }
 
-        private bool LoadUsers(User user)
+
+
+        private JsonArray ReadUsers()
         {
-            if (!users.Contains(user))
+            if (!File.Exists(filePath)) return new JsonArray();
+
+            try
             {
-                return false;
+                return JsonNode.Parse(File.ReadAllText(filePath)) as JsonArray
+                    ?? new JsonArray();
             }
-            return true;
+            catch (JsonException) {
+                return new JsonArray();
+            }   
         }
 
-        private bool VerifyPassword(string password, User user)
+        private void WriteUser(JsonArray json)
         {
-            if (password == user.Password)
-            {
-                return true;
-            }
-            return false;
+            File.WriteAllText(filePath, json.ToJsonString());
         }
 
     }
