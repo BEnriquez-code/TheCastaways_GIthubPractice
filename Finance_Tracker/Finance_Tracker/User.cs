@@ -10,6 +10,7 @@ namespace Finance_Tracker
             UserName = userName;
             Password = password;
         }
+
         private int id;
         private string userName;
         private string password;
