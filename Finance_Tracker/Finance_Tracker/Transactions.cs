@@ -25,9 +25,11 @@ namespace Finance_Tracker
             {
                 throw new ArgumentNullException();
             }
-            int pinNum = 0;
+
             account!.Balance -= amount;
+            account!.TransactionHistory.Add($"-{amount}");
             Console.WriteLine($"Withdrew ${amount} from account!");
+
 
         }
 
@@ -38,7 +40,6 @@ namespace Finance_Tracker
             if (account != null)
             {
                 amount = CIO.PromptForFloat("Enter how much you would like to deposit (between 0 and 1000 (inclusive)): ", 0.0f, 1000.0f);
-                account.Balance -= amount;
             }
             else
             {
@@ -46,13 +47,18 @@ namespace Finance_Tracker
             }
 
             account!.Balance += amount;
+            account!.TransactionHistory.Add($"+{amount}");
 
             Console.WriteLine($"Added ${amount} to account!");
         }
 
-        public static void ViewAccountTransactionHistory()
+        public static void ViewAccountTransactionHistory(Account account)
         {
-            throw new NotImplementedException();
+            int size = account.TransactionHistory.Count;
+            for (int i = size - 1; i >= 0 ; i--)
+            {
+                Console.WriteLine($"{account.TransactionHistory[i]}");
+            }
         }
 
     }
