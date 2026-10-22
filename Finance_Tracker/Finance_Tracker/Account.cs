@@ -19,13 +19,6 @@ namespace Finance_Tracker
             this.Balance = balance;
         }
 
-        private float balance;
-        private int accountNumber;
-        private string accountName;
-        private string pin;
-        private string password;
-
-
         #region Getter/Setters
         public float Balance { get; set; }
         public int AccountNumber { get; set; }
