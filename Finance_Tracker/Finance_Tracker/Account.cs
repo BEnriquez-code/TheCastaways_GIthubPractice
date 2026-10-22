@@ -6,11 +6,8 @@ using System.Text;
 
 namespace Finance_Tracker
 {
-    internal class Account
+    public class Account
     {
-        public Account() {
-            
-        }
         public Account(string accountName, int accountNum, string password, string pin = "0000", float balance = 0.0f) {
             this.AccountName = accountName;
             this.AccountNumber = accountNum;
@@ -34,6 +31,7 @@ namespace Finance_Tracker
 
         public string Pin { get; set; }
         public string Password { get; set; }
+        public int[] TransactionHistory;
         #endregion
 
     }

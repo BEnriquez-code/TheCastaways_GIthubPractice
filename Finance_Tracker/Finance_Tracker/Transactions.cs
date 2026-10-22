@@ -50,7 +50,7 @@ namespace Finance_Tracker
             Console.WriteLine($"Added ${amount} to account!");
         }
 
-        public static void ViewTransactionHistory()
+        public static void ViewAccountTransactionHistory()
         {
             throw new NotImplementedException();
         }
