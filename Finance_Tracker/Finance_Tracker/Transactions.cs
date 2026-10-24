@@ -10,11 +10,11 @@ namespace Finance_Tracker
         public static void Withdraw(Account account)
         {
             // Ask For Amount And Validate
-            float amount = 0.0f;
+            decimal amount = 0.00m;
             if (account != null)
 
             {
-                amount = CIO.PromptForFloat("Enter how much you would like to withdraw (between 0 and 1000 (inclusive)): ", 0.0f, 1000.0f);
+                amount = CIO.PromptForDecimal("Enter how much you would like to withdraw (between 0 and 1000 (inclusive)): ", 0.00m, 1000.00m);
                 if (account.Balance - amount <= 0 || account.Balance < 0)
                 {
                     Console.WriteLine("Your balance is too low to withdraw this amount!");
@@ -36,10 +36,10 @@ namespace Finance_Tracker
         public static void Deposit(Account account)
         {
             // Ask For Amount
-            float amount = 0.0f;
+            decimal amount = 0.00m;
             if (account != null)
             {
-                amount = CIO.PromptForFloat("Enter how much you would like to deposit (between 0 and 1000 (inclusive)): ", 0.0f, 1000.0f);
+                amount = CIO.PromptForDecimal("Enter how much you would like to deposit (between 0 and 1000 (inclusive)): ", 0.00m, 1000.00m);
             }
             else
             {

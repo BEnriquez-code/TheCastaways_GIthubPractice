@@ -8,16 +8,15 @@ namespace Finance_Tracker
 {
     public class Account
     {
-        public Account(string accountName, int accountNum, string password, string pin = "0000", float balance = 0.0f) {
+        public Account(string accountName, int accountNum, string pin = "0000", decimal balance = 0.00m) {
             this.AccountName = accountName;
             this.AccountNumber = accountNum;
-            this.Password = password;
             this.Pin = pin;
             this.Balance = balance;
         }
 
         #region Getter/Setters
-        public float Balance { get; set; }
+        public decimal Balance { get; set; }
         public int AccountNumber { get; set; }
 
         public string AccountName { get;
@@ -30,7 +29,6 @@ namespace Finance_Tracker
                  }
 
         public string Pin { get; set; }
-        public string Password { get; set; }
 
         public List<string> TransactionHistory { get; set; }
         #endregion

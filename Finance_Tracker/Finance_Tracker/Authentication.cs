@@ -9,9 +9,12 @@ namespace Finance_Tracker
 {
     public class Authentication
     {
-        private string filePath = Path.Combine(AppContext.BaseDirectory, "users.json");
+        private readonly UserData _userData;
 
-        public Authentication(){}
+        public Authentication(UserData userData)
+        {
+            _userData = userData;
+        }
 
         public bool SignUp(string userName, string password, string confirmPassword)
         { 
@@ -21,48 +24,40 @@ namespace Finance_Tracker
 
             string name = userName.Trim();
 
-            JsonArray json = ReadUsers();
+            JsonArray json = _userData.ReadUsers();
 
-            if (FindUser(json, name) != null) return false;
+            if (_userData.FindUser(json, name) != null) return false;
 
-            json.Add(JsonSerializer.SerializeToNode(new User(name, password)));
-            WriteUser(json);
+            long uniqueId = _userData.GenerateUniqueId(json);   
+            User newUser = new User(uniqueId, name, password);
+
+            json.Add(JsonSerializer.SerializeToNode(newUser));
+            _userData.WriteUsers(json);
 
             return true;
         }
 
-        public bool LogIn(string userName, string password)
+        public User? LogIn(string userName, string password)
         {
-            JsonNode? user = FindUser(ReadUsers(), userName.Trim());
-            return user != null && user["Password"]?.GetValue<string>() == password;
-        }
+            JsonArray json = _userData.ReadUsers();
+            JsonNode? user = _userData.FindUser(json, userName.Trim());
 
-        private JsonNode? FindUser(JsonArray json, string userName) { 
-            return json.FirstOrDefault(u =>
-                string.Equals(u?["UserName"]?.GetValue<string>(), userName,
-                    StringComparison.OrdinalIgnoreCase));
-        }
+            if (user == null) return null;
+            if (user["Password"]?.GetValue<string>() != password) return null;
 
+            User loggedInUser = new User {
+                Id = user["Id"]?.GetValue<long>() ?? 0,
+                UserName = user["UserName"]?.GetValue<string>() ?? string.Empty,
+                Password = user["Password"]?.GetValue<string>() ?? string.Empty,
+                Age = user["Age"]?.GetValue<int>() ?? 0
+            };
 
-
-        private JsonArray ReadUsers()
-        {
-            if (!File.Exists(filePath)) return new JsonArray();
-
-            try
-            {
-                return JsonNode.Parse(File.ReadAllText(filePath)) as JsonArray
-                    ?? new JsonArray();
+            if (user["Accounts"] is JsonArray accountsArray) {
+                loggedInUser.Accounts = JsonSerializer.Deserialize<List<Account>>(accountsArray.ToJsonString()) ?? new List<Account>();
             }
-            catch (JsonException) {
-                return new JsonArray();
-            }   
+            return loggedInUser;
         }
 
-        private void WriteUser(JsonArray json)
-        {
-            File.WriteAllText(filePath, json.ToJsonString());
-        }
-
+        
     }
 }

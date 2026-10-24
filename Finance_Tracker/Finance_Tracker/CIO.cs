@@ -110,6 +110,33 @@ namespace Finance_Tracker
             return number;
         }
 
+        public static decimal PromptForDecimal(string prompt, decimal min, decimal max)
+        {
+            if (string.IsNullOrWhiteSpace(prompt) || min > max) throw new ArgumentException("The prompt can't be null, empty, or just whitespace. Min can't be greater than Max");
+
+            string? input = null;
+            bool isInvalid = true;
+            decimal number = 0;
+
+            do
+            {
+                Console.Write(prompt);
+                input = Console.ReadLine();
+
+                isInvalid = !decimal.TryParse(input, out number) ||
+                    number < min ||
+                    number > max;
+
+                if (isInvalid)
+                {
+                    Console.WriteLine("Invalid Input. Please try again.\n");
+                }
+
+            } while (isInvalid);
+
+            return number;
+        }
+
         public static int PromptForMenuSelection(IEnumerable<string> options, bool withQuit = false)
         {
             if (options == null || !options.Any() && !withQuit)

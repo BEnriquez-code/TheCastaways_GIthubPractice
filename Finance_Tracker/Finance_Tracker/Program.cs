@@ -6,14 +6,16 @@ namespace Finance_Tracker
     {
         public static void Main(string[] args)
         {
-            // Start Code for Depositing (NOT IMPLEMENTED)
-            Account newAccount = new Account();
-            newAccount.Balance = 2000;
-            Deposit(newAccount, 2000);
-            
-            Deposit(newAccount);
-            Withdraw(newAccount);
-            ViewHistory(newAccount);   
+            var userDataService = new UserData();
+            var auth = new Authentication(userDataService);
+            var accountManager = new AccountManager(userDataService);
+
+
+
+            bool userRegistered = auth.SignUp("UnCheesey", "Password123", "Password123");
+
+            User? currentUser = auth.LogIn("UnCheesey", "Password123");
+            Console.WriteLine($"Welcome, {currentUser?.UserName}");
         }
 
         private static void Withdraw(Account account) { 
