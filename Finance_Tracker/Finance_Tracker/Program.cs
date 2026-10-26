@@ -1,4 +1,5 @@
-﻿using System.Security.Principal;
+﻿using System.Security;
+using System.Security.Principal;
 
 namespace Finance_Tracker
 {
@@ -16,6 +17,7 @@ namespace Finance_Tracker
 
             User? currentUser = auth.LogIn("UnCheesey", "Password123");
             Console.WriteLine($"Welcome, {currentUser?.UserName}");
+
         }
 
         private static void Withdraw(Account account) { 

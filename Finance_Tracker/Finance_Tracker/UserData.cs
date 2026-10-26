@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
+using System.Threading.Tasks.Dataflow;
 
 namespace Finance_Tracker
 {
@@ -30,6 +31,12 @@ namespace Finance_Tracker
         {
             return json.FirstOrDefault(u =>
                 string.Equals(u?["UserName"]?.GetValue<string>(), userName,
+                    StringComparison.OrdinalIgnoreCase));
+        }
+
+        public JsonNode? FindAccount(JsonArray json, string accountName) {
+            return json.FirstOrDefault(u =>
+                string.Equals(u?["AccountName"]?.GetValue<string>(), accountName,
                     StringComparison.OrdinalIgnoreCase));
         }
 
