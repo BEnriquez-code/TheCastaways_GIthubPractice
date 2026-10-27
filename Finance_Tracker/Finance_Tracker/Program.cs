@@ -12,11 +12,12 @@ namespace Finance_Tracker
             var accountManager = new AccountManager(userDataService);
 
 
-
-            bool userRegistered = auth.SignUp("UnCheesey", "Password123", "Password123");
+            bool userRegistered = auth.SignUp("UnCheesey", "Password123", "Password123", 0);
 
             User? currentUser = auth.LogIn("UnCheesey", "Password123");
             Console.WriteLine($"Welcome, {currentUser?.UserName}");
+
+            accountManager.AddAccount(currentUser!, "Savings", "2222", 100m);
 
         }
 

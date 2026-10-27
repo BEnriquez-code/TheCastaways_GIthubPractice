@@ -16,7 +16,7 @@ namespace Finance_Tracker
             _userData = userData;
         }
 
-        public bool SignUp(string userName, string password, string confirmPassword)
+        public bool SignUp(string userName, string password, string confirmPassword, int age)
         { 
             if (string.IsNullOrWhiteSpace(userName)) return false;
             if (string.IsNullOrWhiteSpace(password)) return false;
@@ -29,7 +29,7 @@ namespace Finance_Tracker
             if (_userData.FindUser(json, name) != null) return false;
 
             long uniqueId = _userData.GenerateUniqueId(json);   
-            User newUser = new User(uniqueId, name, password);
+            User newUser = new User(uniqueId, name, password, age);
 
             json.Add(JsonSerializer.SerializeToNode(newUser));
             _userData.WriteUsers(json);
@@ -47,13 +47,21 @@ namespace Finance_Tracker
 
             User loggedInUser = new User {
                 Id = user["Id"]?.GetValue<long>() ?? 0,
+                Age = user["Age"]?.GetValue<int>() ?? 0,
                 UserName = user["UserName"]?.GetValue<string>() ?? string.Empty,
-                Password = user["Password"]?.GetValue<string>() ?? string.Empty,
-                Age = user["Age"]?.GetValue<int>() ?? 0
+                Password = user["Password"]?.GetValue<string>() ?? string.Empty
             };
 
             if (user["Accounts"] is JsonArray accountsArray) {
-                loggedInUser.Accounts = JsonSerializer.Deserialize<List<Account>>(accountsArray.ToJsonString()) ?? new List<Account>();
+                try
+                {
+                    loggedInUser.Accounts = JsonSerializer.Deserialize<List<Account>>(accountsArray.ToJsonString()) ?? new List<Account>();
+                }
+                catch (Exception ex) when(ex is JsonException || ex is InvalidOperationException || ex is NotSupportedException) {
+                    Console.Error.WriteLine($"Could not load accounts for '{loggedInUser.UserName}: {ex.Message}'");
+                    loggedInUser.Accounts = new List<Account>();
+                }
+                
             }
             return loggedInUser;
         }
