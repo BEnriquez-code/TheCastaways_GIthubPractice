@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
+using System.Threading.Tasks.Dataflow;
 
 namespace Finance_Tracker
 {
@@ -36,6 +37,12 @@ namespace Finance_Tracker
         public bool UserExists(string userName)
         {
             return FindUser(ReadUsers(), userName) != null;
+        }
+      
+        public JsonNode? FindAccount(JsonArray json, string accountName) {
+            return json.FirstOrDefault(u =>
+                string.Equals(u?["AccountName"]?.GetValue<string>(), accountName,
+                    StringComparison.OrdinalIgnoreCase));
         }
 
         public long GenerateUniqueId(JsonArray json)
