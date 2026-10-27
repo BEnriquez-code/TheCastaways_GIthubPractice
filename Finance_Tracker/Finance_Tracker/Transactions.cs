@@ -68,7 +68,7 @@ namespace Finance_Tracker
                 if (tranH.Contains("+") && type)
                 {
                     Console.WriteLine(tranH);
-                } if (tranH.Contains("-" && !type))
+                } if (tranH.Contains("-") && !type)
                 {
                     Console.WriteLine(tranH);
                 }
