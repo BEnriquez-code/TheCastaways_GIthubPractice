@@ -6,16 +6,124 @@ namespace Finance_Tracker
     {
         public static void Main(string[] args)
         {
+            BootUpLoop();
+        }
+
+        private static void BootUpLoop() {
             var userDataService = new UserData();
             var auth = new Authentication(userDataService);
-            var accountManager = new AccountManager(userDataService);
+            User? user = null;
+            
 
+            string[] bootUpOptions = { "Signup", "Login" };
+            bool exit = false;
+            do {
+                int option = CIO.PromptForMenuSelection(bootUpOptions, true);
+                switch (option) {
+                    case 1: PromptRegistration(auth, userDataService);
+                        break;
+                    case 2: user = PromptLogin(auth, userDataService);
+                        break;
+                    case 0: exit = true;
+                        break;
+                }
 
+                if (user != null) {
+                    Console.WriteLine($"Welcome, {user.UserName}");
+                }
 
-            bool userRegistered = auth.SignUp("UnCheesey", "Password123", "Password123");
+            } while (!exit);
+        }
 
-            User? currentUser = auth.LogIn("UnCheesey", "Password123");
-            Console.WriteLine($"Welcome, {currentUser?.UserName}");
+        private static void FinancialTrackerLoop() {
+            bool logout = false;
+            do {
+                
+            } while (!logout);
+        }
+
+        private static void PromptRegistration(Authentication auth, UserData userDataService)
+        {
+            string username = "";
+            string password = "";
+            bool isInvalidUsername = true;
+            bool isInvalidPassword = true;
+            do {
+                username = CIO.PromptForString("Choose a username: ", false);
+
+                isInvalidUsername = userDataService.UserExists(username);
+
+                if (isInvalidUsername) {
+                    Console.WriteLine("That username has been taken");
+                }
+
+            } while (isInvalidUsername);
+
+            do {
+                
+
+                password = CIO.PromptForString("Choose a password: ", false);
+
+                bool isValidChars = password.All(c => c >= 33 && c <= 126);
+
+                if (!isValidChars)
+                {
+                    Console.WriteLine("Password cannot contain spaces. Use only alphanumerical characters and standard keyboard symbols (e.g., !, @, #, $, %, *, etc.).");
+                    continue;
+                }
+
+                string passwordConfirm = CIO.PromptForString("Confirm Password: ", false);
+                bool passwordsMatch = string.Equals(password, passwordConfirm);
+
+                if (!passwordsMatch)
+                {
+                    Console.WriteLine("Passwords do not match");
+                }
+
+                isInvalidPassword = !isValidChars || !passwordsMatch;
+
+                if (isInvalidPassword) 
+                {
+                    Console.WriteLine("Could not create new user. Please try again");
+                }
+
+            } while (isInvalidPassword);
+
+            bool isUserCreated = auth.SignUp(username, password, password);
+
+            Console.WriteLine($"User {username} create: {isUserCreated}");
+        }
+
+        private static User? PromptLogin(Authentication auth, UserData userDataService)
+        {
+            string username = "";
+            bool usernameFound = false;
+
+            do
+            {
+                username = CIO.PromptForString("Enter your Username: ", false);
+                usernameFound = userDataService.UserExists(username);
+                if (!usernameFound)
+                {
+                    Console.WriteLine($"User with name \"{username}\" not found");
+                }
+            } while (!usernameFound);
+
+            User? user = null;
+
+            do
+            {
+                string password = CIO.PromptForString("Enter your Password: ", false); ;
+
+                user = auth.LogIn(username, password);
+
+                if (user == null) {
+                    Console.WriteLine("This password does not match to account");
+                }
+
+            } while (user == null);
+
+            return user;
         }
 
         private static void Withdraw(Account account) { 
