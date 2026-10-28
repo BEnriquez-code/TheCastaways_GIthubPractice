@@ -45,10 +45,11 @@ namespace Finance_Tracker
 
         public User() { }
 
-        public User(long id, string name, string password) {
+        public User(long id, string name, string password, int age) {
             Id = id;
             UserName = name;
             Password = password;
+            Age = age;
         }
 
        
