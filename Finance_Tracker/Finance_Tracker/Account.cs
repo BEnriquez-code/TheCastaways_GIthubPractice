@@ -8,12 +8,15 @@ namespace Finance_Tracker
 {
     public class Account
     {
-        public Account() { }
+        public Account() {
+            TransactionHistory = new List<string>();
+        }
         public Account(string accountName, int accountNumber, string pin = "0000", decimal balance = 0.00m) {
             this.AccountName = accountName;
             this.AccountNumber = accountNumber;
             this.Pin = pin;
             this.Balance = balance;
+            TransactionHistory = new List<string>();
         }
 
         #region Getter/Setters

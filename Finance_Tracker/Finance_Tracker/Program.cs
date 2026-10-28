@@ -7,7 +7,7 @@ namespace Finance_Tracker
     {
         public static void Main(string[] args)
         {
-            BootUpLoop();
+          BootUpLoop();
         }
 
         private static void BootUpLoop() {
@@ -90,7 +90,7 @@ namespace Finance_Tracker
 
             } while (isInvalidPassword);
 
-            bool isUserCreated = auth.SignUp(username, password, password);
+            bool isUserCreated = auth.SignUp(username, password, password,0);
 
             Console.WriteLine($"User {username} create: {isUserCreated}");
         }
