@@ -90,7 +90,7 @@ namespace Finance_Tracker
 
             } while (isInvalidPassword);
 
-            bool isUserCreated = auth.SignUp(username, password, password);
+            bool isUserCreated = auth.SignUp(username, password, password,0);
 
             Console.WriteLine($"User {username} create: {isUserCreated}");
         }
@@ -180,5 +180,17 @@ namespace Finance_Tracker
 
             Console.WriteLine($"Current balance is: ${account.Balance}");
         }
+        private static void PromptAddGoal(User user)
+        {
+            string goal = CIO.PromptForString("What goal do you want to accomplish?: ", false);
+            user.Goals.Add(goal);
+            Console.WriteLine($"Added {goal} to your list of {user.Goals}");
+
+        }
+
+        private static void ViewGoals(List<string> goals) {
+            CIO.PrintOutList(goals);
+        }
     }
+
 }

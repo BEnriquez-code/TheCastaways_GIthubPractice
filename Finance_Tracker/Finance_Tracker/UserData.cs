@@ -23,6 +23,16 @@ namespace Finance_Tracker
             }
         }
 
+        public bool SaveGoals(User user) {
+            JsonArray users = ReadUsers();
+            JsonNode? node = FindUser(users, user.UserName);
+            if (node == null) return false;
+
+            node["Goals"] = JsonSerializer.Serialize(user.Goals);
+            WriteUsers(users);
+            return true;
+        }
+
         public void WriteUsers(JsonArray json) {
             File.WriteAllText(_filePath, json.ToJsonString());
         }
@@ -44,6 +54,7 @@ namespace Finance_Tracker
                 string.Equals(u?["AccountName"]?.GetValue<string>(), accountName,
                     StringComparison.OrdinalIgnoreCase));
         }
+
 
         public long GenerateUniqueId(JsonArray json)
         {

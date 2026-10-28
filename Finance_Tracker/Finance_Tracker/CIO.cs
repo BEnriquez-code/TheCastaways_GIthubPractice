@@ -162,5 +162,16 @@ namespace Finance_Tracker
 
             return PromptForInt(optionsString, min, max);
         }
+
+        public static void PrintOutList(IEnumerable<string> list) {
+            if (list == null || !list.Any()) {
+                throw new ArgumentException("List can't be null or empty");
+            }
+
+            foreach (string l in list) {
+                Console.Write($"{l}\n");
+            }
+        }
+
     }
 }
