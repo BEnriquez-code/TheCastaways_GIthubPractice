@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Principal;
 using System.Text;
 
 
@@ -7,18 +8,19 @@ namespace Finance_Tracker
 {
     internal static class Transactions
     {
-        public static void Withdraw(Account account)
+        public static bool Withdraw(Account account)
         {
             // Ask For Amount And Validate
             decimal amount = 0.00m;
             if (account != null)
 
             {
-                amount = CIO.PromptForDecimal("Enter how much you would like to withdraw (between 0 and 1000 (inclusive)): ", 0.00m, 1000.00m);
-                if (account.Balance - amount <= 0 || account.Balance < 0)
+                amount = CIO.PromptForDecimal($"Enter how much you would like to withdraw (balance: {account.Balance}) : ", 0.00m,account.Balance);
+                if (account.Balance - amount < 0 || account.Balance < 0)
                 {
                     Console.WriteLine("Your balance is too low to withdraw this amount!");
-                    return;
+                    ///the transaction didn't go through
+                    return false;
                 }
             }
             else
@@ -29,7 +31,8 @@ namespace Finance_Tracker
             account!.Balance -= amount;
             account!.TransactionHistory.Add($"-{amount}");
             Console.WriteLine($"Withdrew ${amount} from account!");
-
+            //the transaction DID went through
+            return true;
 
         }
 
@@ -39,7 +42,7 @@ namespace Finance_Tracker
             decimal amount = 0.00m;
             if (account != null)
             {
-                amount = CIO.PromptForDecimal("Enter how much you would like to deposit (between 0 and 1000 (inclusive)): ", 0.00m, 1000.00m);
+                amount = CIO.PromptForDecimal("Enter how much you would like to deposit: ", 0.00m,decimal.MaxValue);
             }
             else
             {
@@ -73,6 +76,28 @@ namespace Finance_Tracker
                     Console.WriteLine(tranH);
                 }
             }
+        }
+        public static void Transfer(Account sender, Account receiver) {
+            Console.WriteLine("Select how much money to withdraw from your account to send\n");
+            decimal moneyQuantity = sender.Balance;
+            bool didItGoThrough = Withdraw(sender);
+            decimal transactionAmount = moneyQuantity - sender.Balance;
+            
+            
+            if (didItGoThrough) {
+                receiver!.Balance += transactionAmount;
+                receiver!.TransactionHistory.Add($"+{transactionAmount}");
+
+                Console.WriteLine($"{receiver.AccountName} received ${transactionAmount} !\n");
+                Console.WriteLine($"{receiver.AccountName}'s balance: ${receiver.Balance}");
+            }
+            else
+            {
+                Console.WriteLine($"The transaction couldn't be made");
+            }
+       
+        
+        
         }
 
     }

@@ -7,7 +7,7 @@ namespace Finance_Tracker
     {
         public static void Main(string[] args)
         {
-            BootUpLoop();
+          BootUpLoop();
         }
 
         private static void BootUpLoop() {
