@@ -13,15 +13,28 @@ namespace Finance_Tracker
         private static void BootUpLoop() {
             var userDataService = new UserData();
             var auth = new Authentication(userDataService);
-            User? user = null;
+            User? user;
             
 
             string[] bootUpOptions = { "Signup", "Login" };
             bool exit = false;
             do {
+                user = null;
+
                 int option = CIO.PromptForMenuSelection(bootUpOptions, true);
                 switch (option) {
-                    case 1: PromptRegistration(auth, userDataService);
+                    case 1: 
+                        {
+                            int age = PromptAge();
+                            if (age >= 16)
+                            {
+                                PromptRegistration(age, auth, userDataService);
+                            }
+                            else
+                            {
+                                Console.WriteLine("You are not old enough to register.");
+                            }
+                        };
                         break;
                     case 2: user = PromptLogin(auth, userDataService);
                         break;
@@ -30,25 +43,49 @@ namespace Finance_Tracker
                 }
 
                 if (user != null) {
-                    Console.WriteLine($"Welcome, {user.UserName}");
+                    FinancialTrackerLoop(user);
                 }
 
             } while (!exit);
         }
 
-        private static void FinancialTrackerLoop() {
+        private static void FinancialTrackerLoop(User user) {
+            string[] options = ["Create New Account", "View Accounts", "View Goals", "Set New Goal"];
             bool logout = false;
             do {
-                
+                Console.WriteLine($"\n\nWelcome, {user.UserName}\n\n");
+
+                int option = CIO.PromptForMenuSelection(options, true);
+
+                switch (option)
+                {
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    case 0:
+                        logout = true;
+                        break;
+                }
+
             } while (!logout);
         }
 
-        private static void PromptRegistration(Authentication auth, UserData userDataService)
+        private static int PromptAge() {
+            return CIO.PromptForInt("Insert your age: ", 1, int.MaxValue);
+        }
+
+        private static void PromptRegistration(int age, Authentication auth, UserData userDataService)
         {
             string username = "";
             string password = "";
             bool isInvalidUsername = true;
             bool isInvalidPassword = true;
+
             do {
                 username = CIO.PromptForString("Choose a username: ", false);
 
@@ -90,7 +127,7 @@ namespace Finance_Tracker
 
             } while (isInvalidPassword);
 
-            bool isUserCreated = auth.SignUp(username, password, password,0);
+            bool isUserCreated = auth.SignUp(username, password, age);
 
             Console.WriteLine($"User {username} create: {isUserCreated}");
         }
