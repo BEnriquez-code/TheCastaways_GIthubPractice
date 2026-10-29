@@ -7,6 +7,10 @@ namespace Finance_Tracker
     {
         public static void Main(string[] args)
         {
+          BootUpLoop();
+        }
+
+        private static void BootUpLoop() {
             var userDataService = new UserData();
             var auth = new Authentication(userDataService);
             User? user;
