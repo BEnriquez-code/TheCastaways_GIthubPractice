@@ -42,6 +42,7 @@ namespace Finance_Tracker
             }
         }
         public List<Account> Accounts { get; set; } = new List<Account>();
+        public List<string> Goals { get; set; } = new List<string>();
 
         public User() { }
 
@@ -51,8 +52,6 @@ namespace Finance_Tracker
             Password = password;
             Age = age;
         }
-
-       
 
         
     }

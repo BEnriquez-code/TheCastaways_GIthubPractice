@@ -7,11 +7,11 @@ using System.Text.Json.Nodes;
 
 namespace Finance_Tracker
 {
-    public class AccountManager
+    public class Manager
     {
         private readonly UserData _userData;
 
-        public AccountManager(UserData userData) {
+        public Manager(UserData userData) {
             _userData = userData;
         }
 
@@ -32,6 +32,11 @@ namespace Finance_Tracker
             user.Accounts.Add(newAccount);
 
             return SaveUserChanges(user);
+        }
+
+        public void AddGoal(User user, string goal) {
+            user.Goals.Add(goal);
+            _userData.SaveGoals(user);
         }
 
         public bool RemoveAccount(User user, string accountName) {
