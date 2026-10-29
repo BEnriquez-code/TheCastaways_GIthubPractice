@@ -13,7 +13,7 @@ namespace Finance_Tracker
         }
         public Account(string accountName, int accountNumber, string pin = "0000", decimal balance = 0.00m) {
             this.AccountName = accountName;
-            this.AccountNumber = accountNumber;
+            this.AccountNumber = accountNum;
             this.Pin = pin;
             this.Balance = balance;
             TransactionHistory = new List<string>();
@@ -30,7 +30,7 @@ namespace Finance_Tracker
                     field = value!;
                 }
             }
-        }
+                 }
 
         public string Pin { get; set; }
 

@@ -62,16 +62,19 @@ namespace Finance_Tracker
             {
                 Console.WriteLine($"{account.TransactionHistory[i]}");
             }
+
+
         }
 
         public static void ViewAccountTransactionHistory(Account account, bool type) // True = Income, False = Expenses
         {
-            foreach(string tranH in account.TransactionHistory)
+            foreach (string tranH in account.TransactionHistory)
             {
                 if (tranH.Contains("+") && type)
                 {
                     Console.WriteLine(tranH);
-                } if (tranH.Contains("-") && !type)
+                }
+                if (tranH.Contains("-") && !type)
                 {
                     Console.WriteLine(tranH);
                 }

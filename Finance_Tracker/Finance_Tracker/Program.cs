@@ -46,8 +46,7 @@ namespace Finance_Tracker
                     FinancialTrackerLoop(user);
                 }
 
-            } while (!exit);
-        }
+            bool userRegistered = auth.SignUp("UnCheesey", "Password123", "Password123");
 
         private static void FinancialTrackerLoop(User user) {
             string[] options = ["Create New Account", "View Accounts", "View Goals", "Set New Goal"];
@@ -205,15 +204,29 @@ namespace Finance_Tracker
         }
 
         private static void ViewHistory(Account account) {
+
+           int choice = CIO.PromptForMenuSelection(["View Full Transaction History", "View Income", "View Expenses"], false);
+
             if (account.TransactionHistory == null)
             {
                 account.TransactionHistory = new List<string>();
-                Transactions.ViewAccountTransactionHistory(account);
             }
-            else
+
+            switch (choice)
             {
-                Transactions.ViewAccountTransactionHistory(account);
+                case 1:
+                    Transactions.ViewAccountTransactionHistory(account);
+                    break;
+                case 2:
+                    Transactions.ViewAccountTransactionHistory(account, true);
+                    break;
+                case 3:
+                    Transactions.ViewAccountTransactionHistory(account, false);
+                    break;
+                default:
+                    return;
             }
+            
 
             Console.WriteLine($"Current balance is: ${account.Balance}");
         }

@@ -44,11 +44,6 @@ namespace Finance_Tracker
                     StringComparison.OrdinalIgnoreCase));
         }
 
-        public bool UserExists(string userName)
-        {
-            return FindUser(ReadUsers(), userName) != null;
-        }
-      
         public JsonNode? FindAccount(JsonArray json, string accountName) {
             return json.FirstOrDefault(u =>
                 string.Equals(u?["AccountName"]?.GetValue<string>(), accountName,

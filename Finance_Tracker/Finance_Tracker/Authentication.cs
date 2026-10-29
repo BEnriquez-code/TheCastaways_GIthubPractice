@@ -28,7 +28,7 @@ namespace Finance_Tracker
             if (_userData.FindUser(json, name) != null) return false;
 
             long uniqueId = _userData.GenerateUniqueId(json);   
-            User newUser = new User(uniqueId, name, password, age);
+            User newUser = new User(uniqueId, name, password);
 
             json.Add(JsonSerializer.SerializeToNode(newUser));
             _userData.WriteUsers(json);
@@ -46,21 +46,13 @@ namespace Finance_Tracker
 
             User loggedInUser = new User {
                 Id = user["Id"]?.GetValue<long>() ?? 0,
-                Age = user["Age"]?.GetValue<int>() ?? 0,
                 UserName = user["UserName"]?.GetValue<string>() ?? string.Empty,
-                Password = user["Password"]?.GetValue<string>() ?? string.Empty
+                Password = user["Password"]?.GetValue<string>() ?? string.Empty,
+                Age = user["Age"]?.GetValue<int>() ?? 0
             };
 
             if (user["Accounts"] is JsonArray accountsArray) {
-                try
-                {
-                    loggedInUser.Accounts = JsonSerializer.Deserialize<List<Account>>(accountsArray.ToJsonString()) ?? new List<Account>();
-                }
-                catch (Exception ex) when(ex is JsonException || ex is InvalidOperationException || ex is NotSupportedException) {
-                    Console.Error.WriteLine($"Could not load accounts for '{loggedInUser.UserName}: {ex.Message}'");
-                    loggedInUser.Accounts = new List<Account>();
-                }
-                
+                loggedInUser.Accounts = JsonSerializer.Deserialize<List<Account>>(accountsArray.ToJsonString()) ?? new List<Account>();
             }
             return loggedInUser;
         }
