@@ -16,11 +16,10 @@ namespace Finance_Tracker
             _userData = userData;
         }
 
-        public bool SignUp(string userName, string password, string confirmPassword, int age)
+        public bool SignUp(string userName, string password, int age)
         { 
             if (string.IsNullOrWhiteSpace(userName)) return false;
             if (string.IsNullOrWhiteSpace(password)) return false;
-            if (password != confirmPassword) return false;
 
             string name = userName.Trim();
 
