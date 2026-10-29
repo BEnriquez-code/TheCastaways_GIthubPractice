@@ -13,17 +13,16 @@ namespace Finance_Tracker
         private static void BootUpLoop() {
             var userDataService = new UserData();
             var auth = new Authentication(userDataService);
-            User? user;
-            
+            User? user = null;
 
             string[] bootUpOptions = { "Signup", "Login" };
             bool exit = false;
-            do {
-                user = null;
-
+            do
+            {
                 int option = CIO.PromptForMenuSelection(bootUpOptions, true);
-                switch (option) {
-                    case 1: 
+                switch (option)
+                {
+                    case 1:
                         {
                             int age = PromptAge();
                             if (age >= 16)
@@ -34,19 +33,24 @@ namespace Finance_Tracker
                             {
                                 Console.WriteLine("You are not old enough to register.");
                             }
-                        };
+                        }
+                        ;
                         break;
-                    case 2: user = PromptLogin(auth, userDataService);
+                    case 2:
+                        user = PromptLogin(auth, userDataService);
                         break;
-                    case 0: exit = true;
+                    case 0:
+                        exit = true;
                         break;
                 }
 
                 if (user != null) {
                     FinancialTrackerLoop(user);
+                    user = null;
                 }
 
-            bool userRegistered = auth.SignUp("UnCheesey", "Password123", "Password123");
+            } while (!exit);
+        }
 
         private static void FinancialTrackerLoop(User user) {
             string[] options = ["Create New Account", "View Accounts", "View Goals", "Set New Goal"];

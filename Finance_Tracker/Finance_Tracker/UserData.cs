@@ -50,6 +50,10 @@ namespace Finance_Tracker
                     StringComparison.OrdinalIgnoreCase));
         }
 
+        public bool UserExists(string userName) {
+            JsonArray json = ReadUsers();
+            return FindUser(json, userName) != null;
+        }
 
         public long GenerateUniqueId(JsonArray json)
         {

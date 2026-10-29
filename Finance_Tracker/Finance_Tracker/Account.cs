@@ -11,7 +11,7 @@ namespace Finance_Tracker
         public Account() {
             TransactionHistory = new List<string>();
         }
-        public Account(string accountName, int accountNumber, string pin = "0000", decimal balance = 0.00m) {
+        public Account(string accountName, int accountNum, string pin = "0000", decimal balance = 0.00m) {
             this.AccountName = accountName;
             this.AccountNumber = accountNum;
             this.Pin = pin;
